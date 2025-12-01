@@ -6,8 +6,8 @@ from controllers.students import (
     get_all_students
       , get_student
       , create_student
-    # , update_student
-    # , delete_student
+      , update_student
+    #   , delete_student
 )
 
 from core.static import serve_static
@@ -31,15 +31,7 @@ class StudentRouter(BaseHTTPRequestHandler):
         path = urlparse(self.path).path
 
         # # HTML pages
-        # if path in ("/", "/index.html"):
-        #     return serve_static(self, "templates/index.html")
-
-        # if path in ("/docs", "/docs.html"):
-        #     return serve_static(self, "templates/docs.html")
-
-        # if path == "/openapi.yaml":
-        #     return serve_static(self, "openapi.yaml")
-
+       #
         # # Static folder
         # if path.startswith("/static/"):
         #     return serve_static(self, path.lstrip("/"))
@@ -60,11 +52,11 @@ class StudentRouter(BaseHTTPRequestHandler):
              return create_student(self)
          return send_404(self)
 
-    # def do_PUT(self):
-    #     if self.path.startswith("/api/students/"):
-    #         student_id = int(self.path.split("/")[-1])
-    #         return update_student(self, student_id)
-    #     return send_404(self)
+    def do_PUT(self):
+        if self.path.startswith("/api/students/"):
+            student_id = int(self.path.split("/")[-1])
+            return update_student(self, student_id)
+        return send_404(self)
 
     # def do_DELETE(self):
     #     if self.path.startswith("/api/students/"):
