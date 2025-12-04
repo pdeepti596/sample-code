@@ -5,8 +5,8 @@ from services.student_service import (
     service_get_all
     , service_get_one
     , service_create
-     , service_update
-    #  , service_delete
+    , service_update
+    , service_delete
 )
 
 def get_all_students(handler):
@@ -26,6 +26,6 @@ def update_student(handler, student_id):
     updated = service_update(student_id, data)
     return send_json(handler, 200, updated) if updated else send_404(handler)
 
-# def delete_student(handler, student_id):
-#     deleted = service_delete(student_id)
-#     return send_json(handler, 200, {"deleted": True}) if deleted else send_404(handler)
+def delete_student(handler, student_id):
+    deleted = service_delete(student_id)
+    return send_json(handler, 200, {"deleted": True}) if deleted else send_404(handler)
