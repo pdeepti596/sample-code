@@ -13,3 +13,33 @@ export async function apiGetAll() {
     if (!res.ok) return [];
     return safeJson(res);
 }
+
+export function  apiCreate(data) {
+    return fetch(API_URL, {
+        method : "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    });
+}
+
+export function apiUpdate(id, data) {
+    return fetch (`${API_URL}/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    });
+}
+
+// // Update a student
+export function apiUpdate(id, data) {
+  return fetch(`${API_URL}/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+}
+
+// Delete a student
+export function apiDelete(id) {
+  return fetch(`${API_URL}/${id}`, { method: "DELETE" });
+}
