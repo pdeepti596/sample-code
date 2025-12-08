@@ -2,8 +2,8 @@ import {
     apiGetAll, 
     apiGetOne, 
     apiCreate, 
-    // apiUpdate, 
-    // apiDelete 
+    apiUpdate, 
+    apiDelete 
 } from "../services/studentService.js";
 
 import { showAlert } from "../components/Alert.js";
